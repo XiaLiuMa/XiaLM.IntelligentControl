@@ -100,5 +100,81 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Aide_Down.png" />
+    <Resource Include="Images\Aide_Up.png" />
+    <Resource Include="Images\BackGround.png" />
+    <Resource Include="Images\Barcode_Down.png" />
+    <Resource Include="Images\Barcode_Up.png" />
+    <Resource Include="Images\Btn_Log.png" />
+    <Resource Include="Images\Communication_Down.png" />
+    <Resource Include="Images\Communication_Up.png" />
+    <Resource Include="Images\DataAnalyze_Down.png" />
+    <Resource Include="Images\DataAnalyze_Up.png" />
+    <Resource Include="Images\DataManagement.png" />
+    <Resource Include="Images\Data_Down.png" />
+    <Resource Include="Images\Data_Up.png" />
+    <Resource Include="Images\ErrorTitle.png" />
+    <Resource Include="Images\Home.png" />
+    <Resource Include="Images\Import_Down.png" />
+    <Resource Include="Images\Import_Up.png" />
+    <Resource Include="Images\Login.png" />
+    <Resource Include="Images\Login1.png" />
+    <Resource Include="Images\Login_password.png" />
+    <Resource Include="Images\Login_user.png" />
+    <Resource Include="Images\Machine.png" />
+    <Resource Include="Images\MachineManagement.png" />
+    <Resource Include="Images\Machine_1.png" />
+    <Resource Include="Images\Machine_Down.png" />
+    <Resource Include="Images\Machine_Up.png" />
+    <Resource Include="Images\MainBackGround.png" />
+    <Resource Include="Images\MainBackground2.png" />
+    <Resource Include="Images\Maintain_Down.png" />
+    <Resource Include="Images\Maintain_Up.png" />
+    <Resource Include="Images\Metering_Down.png" />
+    <Resource Include="Images\Metering_Up.png" />
+    <Resource Include="Images\pagination_first.gif" />
+    <Resource Include="Images\pagination_first_gray.gif" />
+    <Resource Include="Images\pagination_last.gif" />
+    <Resource Include="Images\pagination_last_gray.gif" />
+    <Resource Include="Images\pagination_next.gif" />
+    <Resource Include="Images\pagination_next_gray.gif" />
+    <Resource Include="Images\pagination_prev.gif" />
+    <Resource Include="Images\pagination_prev_gray.gif" />
+    <Resource Include="Images\Patient_Down.png" />
+    <Resource Include="Images\Patient_Up.png" />
+    <Resource Include="Images\Reagents_Down.png" />
+    <Resource Include="Images\Reagents_Up.png" />
+    <Resource Include="Images\Request_Down.png" />
+    <Resource Include="Images\Request_Up.png" />
+    <Resource Include="Images\Sample_Down.png" />
+    <Resource Include="Images\Sample_Up.png" />
+    <Resource Include="Images\Start_Down.png" />
+    <Resource Include="Images\Start_Up.png" />
+    <Resource Include="Images\Status_OFF.png" />
+    <Resource Include="Images\Status_ON.png" />
+    <Resource Include="Images\SystemEdit_Down.png" />
+    <Resource Include="Images\SystemEdit_Up.png" />
+    <Resource Include="Images\SystemManagement.png" />
+    <Resource Include="Images\System_Down.png" />
+    <Resource Include="Images\System_Up.png" />
+    <Resource Include="Images\TestManagement.png" />
+    <Resource Include="Images\Test_Down.png" />
+    <Resource Include="Images\Test_Up.png" />
+    <Resource Include="Images\Title.png" />
+    <Resource Include="Images\UnitControl_Down.png" />
+    <Resource Include="Images\UnitControl_Up.png" />
+    <Resource Include="Images\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseModule\BaseModule.csproj">
+      <Project>{13f2bbf2-7e61-4ded-9372-67499c6bbd52}</Project>
+      <Name>BaseModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
+      <Project>{dcb6e9e0-e058-4555-b223-648af5bbaee6}</Project>
+      <Name>CustomControls</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
