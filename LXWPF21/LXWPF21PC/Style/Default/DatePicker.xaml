@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Base.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource base}">
+        <Style.Resources>
+            <Style TargetType="Button"/>
+        </Style.Resources>
+        <Setter Property="Width" Value="150"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+    </Style>
+
+  <Style TargetType="{x:Type DatePicker}" x:Key="FormatDatePicker">
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <TextBox>
+            
+          </TextBox>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    
+  </Style>
+
+</ResourceDictionary>

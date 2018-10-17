@@ -56,13 +56,13 @@
             <!-- 设置 pwdBox 获得焦点  FocusManager.FocusedElement -->
             <StackPanel Grid.Row="1" VerticalAlignment="Center"  FocusManager.FocusedElement="{Binding ElementName=pwdBox}">
                 <!--设置用户名输入框获得焦点-->
-                <userControl:AutoCompleteTextBox  Margin="90,0,90,20"  x:Name="userNameBox"  />
+                <userControl:AutoCompleteTextBox  Margin="90,0,90,20" LxStyle="{StaticResource LxTextBoxLogin}" x:Name="userNameBox"  />
                 <PasswordBox PasswordChar="*" MaxLength="20"  Style="{StaticResource LoginPasswordBox}"  x:Name="pwdBox">
                     <PasswordBox.Background>
                         <ImageBrush ImageSource="Images/Login_password.png"/>
                     </PasswordBox.Background>
                 </PasswordBox>
-                <Button Content="{DynamicResource btn_log}" Foreground="White" FontSize="25" Margin="0,20,0,0" Style="{StaticResource LoginBtn}" Click="Button_Click">
+                <Button Content="{DynamicResource LoginBtn}" Foreground="White" FontSize="25" Margin="0,20,0,0" Style="{StaticResource LoginBtn}" Click="Button_Click">
                     <Button.Background>
                         <ImageBrush ImageSource="Images/Btn_Log.png"/>
                     </Button.Background>

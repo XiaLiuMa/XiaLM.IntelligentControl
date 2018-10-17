@@ -21,8 +21,8 @@ namespace LXWPF21PC
         {
             InitializeComponent();
 
-            //获取最近登陆过的用户的信息。
-            System.Data.DataSet ds = DBHelper.Query("select username from user where lastlogintime is not null order by lastlogintime desc  limit 5");
+            string sql = "select top 5 username from iuser where lastlogintime is not null order by lastlogintime desc";
+            System.Data.DataSet ds = DBHelper.Query(sql);   //获取最近登陆过的用户的信息。
             names = new List<string>();
             int n = ds.Tables[0].Rows.Count;
             AutoCompleteEntry autoEntry = null;
@@ -69,7 +69,7 @@ namespace LXWPF21PC
             {
                 // DBHelper.ExecuteSql($"update user set PassWord='{strMD5}' where UserName='{username}'");
 
-                int n = DBHelper.ExecuteSql($"update user set LastLoginTime='{loginTime}' where UserName='{userName}'");
+                int n = DBHelper.ExecuteSql($"update iuser set LastLoginTime='{loginTime}' where UserName='{userName}'");
                 if (n > 0)
                 {
                     // GoToMainWindow(userName);

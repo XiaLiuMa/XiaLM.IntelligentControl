@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Base.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style TargetType="ProgressBar" BasedOn="{StaticResource base}">
+        <!-- トラック部分の背景 -->
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint=".5,1" StartPoint=".5,0">
+                    <GradientStop Color="#FFF9F9F7" Offset="0"/>
+                    <GradientStop Color="#FFC63131" Offset="0.5"/>
+                    <GradientStop Color="#FFEF9437" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <!-- 進捗部分の背景 -->
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Maximum" Value="100"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Rectangle Fill="{TemplateBinding Background}"
+                                        Name="PART_Track" />
+                            <Rectangle Fill="{TemplateBinding Foreground}"
+                                        Name="PART_Indicator" 
+                                        HorizontalAlignment="Left"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

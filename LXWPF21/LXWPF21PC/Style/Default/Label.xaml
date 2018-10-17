@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Base.xaml"></ResourceDictionary>
+  </ResourceDictionary.MergedDictionaries>
+
+  <ControlTemplate x:Key="RoundLabelTemplate" TargetType="Label">
+    <Border>
+      <Grid>
+        <Ellipse Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Fill="{TemplateBinding Background}" Stroke="Black"></Ellipse>
+        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+      </Grid>
+    </Border>
+  </ControlTemplate>
+  
+  <Style TargetType="{x:Type Label}" BasedOn="{StaticResource base}">
+  </Style>
+
+  <Style x:Key="StatusLabel" TargetType="{x:Type Label}" BasedOn="{StaticResource base}">
+    <Setter Property="Background" Value="Aqua"></Setter>
+  </Style>
+
+  <Style x:Key="CommonDescript1" TargetType="{x:Type Label}" BasedOn="{StaticResource base}">
+    <Setter Property="Background" Value="DarkTurquoise"></Setter>
+    <Setter Property="Height" Value="28"></Setter>
+    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+    <Setter Property="Margin" Value="0,5,0,0"></Setter>
+  </Style>
+
+  <Style x:Key="RoundLabel" TargetType="Label" BasedOn="{StaticResource base}">
+    <Setter Property="Template" Value="{StaticResource RoundLabelTemplate}"></Setter>
+  </Style>
+
+  <Style x:Key="FrameLabel" TargetType="Label" BasedOn="{StaticResource base}">
+    <Setter Property="BorderBrush" Value="Black"></Setter>
+    <Setter Property="BorderThickness" Value="1"></Setter>
+    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+    <Setter Property="Height" Value="40"></Setter>
+    <Setter Property="Width" Value="80"></Setter>
+  </Style>
+
+  <Style x:Key="BackGroundLabel" TargetType="Label">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border>
+            <Grid>
+              <Grid.Background>
+                <LinearGradientBrush>
+                  <LinearGradientBrush.StartPoint>
+                    <Point>0,0</Point>
+                  </LinearGradientBrush.StartPoint>
+                  <LinearGradientBrush.EndPoint>
+                    <Point>1,0</Point>
+                  </LinearGradientBrush.EndPoint>
+                  <LinearGradientBrush.GradientStops>
+                    <GradientStop Color="SteelBlue" Offset="0"/>
+                    <GradientStop Color="SkyBlue"  Offset="0.2"/>
+                    <GradientStop Color="LightBlue" Offset="0.3"/>
+                    <GradientStop Color="LightBlue"  Offset="0.3"/>
+                    <GradientStop Color="MidnightBlue" Offset="1"/>
+                  </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+              </Grid.Background>
+              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+              <Canvas>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.1" Canvas.Left="15" Canvas.Top="40"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.2" Canvas.Left="40" Canvas.Top="20"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.3" Canvas.Left="100" Canvas.Top="10"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.3" Canvas.Left="180" Canvas.Top="18"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.3" Canvas.Left="182" Canvas.Top="25"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.1" Canvas.Left="165" Canvas.Top="28"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.3" Canvas.Left="175" Canvas.Top="40"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.2" Canvas.Left="176" Canvas.Top="43"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.1" Canvas.Left="200" Canvas.Top="5"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.1" Canvas.Left="195" Canvas.Top="35"></Ellipse>
+                <Ellipse Width="5" Height="5" Fill="Black" Opacity="0.1" Canvas.Left="300" Canvas.Top="15"></Ellipse>
+              </Canvas>
+            </Grid>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  
+</ResourceDictionary>

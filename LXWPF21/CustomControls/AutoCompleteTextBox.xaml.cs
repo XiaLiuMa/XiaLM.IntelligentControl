@@ -46,21 +46,23 @@ namespace CustomControls
             set { searchThreshold = value; }
         }
 
+        public Style LxStyle
+        {
+            get { return textBox.Style; }
+            set { textBox.Style = value; }
+        }
+
         public AutoCompleteTextBox()
         {
+            controls = new VisualCollection(this);
             InitializeComponent();
 
-            controls = new VisualCollection(this);
             autoCompletionList = new ObservableCollection<AutoCompleteEntry>();
             searchThreshold = 0;        // default threshold to 2 char
             delayTime = 100;
-
-            // set up the key press timer
-            keypressTimer = new System.Timers.Timer();
+            keypressTimer = new System.Timers.Timer();  // set up the key press timer
             keypressTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
-
-            // set up the text box and the combo box
-            comboBox = new ComboBox();
+            comboBox = new ComboBox();  // set up the text box and the combo box
             comboBox.Width = 300;
             comboBox.Height = 50;
             comboBox.Visibility = Visibility.Hidden;
@@ -68,15 +70,12 @@ namespace CustomControls
             comboBox.IsTabStop = false;
             Panel.SetZIndex(comboBox, -1);
             comboBox.SelectionChanged += new SelectionChangedEventHandler(comboBox_SelectionChanged);
-
             textBox = new LxTextBox();
-            textBox.Style = (Style)FindResource("LD_TextBoxLogin");
             textBox.TextChanged += new TextChangedEventHandler(textBox_TextChanged);
             textBox.GotFocus += new RoutedEventHandler(textBox_GotFocus);
             textBox.KeyUp += new KeyEventHandler(textBox_KeyUp);
             textBox.KeyDown += new KeyEventHandler(textBox_KeyDown);
             textBox.VerticalContentAlignment = VerticalAlignment.Center;
-
             controls.Add(comboBox);
             controls.Add(textBox);
         }
@@ -339,8 +338,7 @@ namespace CustomControls
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
-            //当Type不等于0时做输入法限制设置
-            if (this.Type != 0)
+            if (this.Type != 0) //当Type不等于0时做输入法限制设置
             {
                 InputMethod.SetIsInputMethodEnabled(this, false);
             }

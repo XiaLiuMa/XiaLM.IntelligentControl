@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Base.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+    <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">40</sys:Double>
+    <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}">40</sys:Double>
+
+    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource base}">
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Height" Value="40" />
+            </Trigger>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="Width" Value="37"/>
+                <Setter Property="Height" Value="Auto" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
