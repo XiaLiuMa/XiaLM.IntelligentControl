@@ -1,12 +1,468 @@
-﻿<Window x:Class="LXWPF21PC.MainWindow"
+﻿<baseModule:BaseWindow x:Class="LXWPF21PC.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LXWPF21PC"
+        xmlns:baseModule="clr-namespace:BaseModule.UI;assembly=BaseModule"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="768" Width="1024" Loaded="Window_Loaded">
+    <Window.Resources>
+        <DiffuseMaterial x:Key="DiffuseMaterialStyle" Viewport2DVisual3D.IsVisualHostMaterial="True" Brush="White"/>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.Resources>
+            <ControlTemplate x:Key="tem" TargetType="{x:Type Button}">
+                <Grid  Background="{TemplateBinding Background}">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Name="PART_Background" Grid.Column="1">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="tem2" TargetType="{x:Type Button}">
+                <Grid  Background="{TemplateBinding Background}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Name="PART_Background" Grid.Row="1">
+                        <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="tem3" TargetType="{x:Type Button}">
+                <Grid  Background="{TemplateBinding Background}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Name="PART_Background" Grid.Row="1">
+                        <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+            <Style x:Key="TestBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Test_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Test_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF15ADCF"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="PatientBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Patient_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Patient_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF0557AA"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="DataBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Data_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Data_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF0557AA"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="SystemBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/System_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/System_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF1A72AE"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="ReagentsBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Reagents_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem2}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Reagents_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF15ADCF"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="SampleBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Sample_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem2}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Sample_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF15ADCF"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="RequestBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Request_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem2}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Request_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF15ADCF"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="StartBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Start_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem2}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Start_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF15ADCF"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="DataAnalyzeBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/DataAnalyze_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/DataAnalyze_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF0557AA"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="CommunicationBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Communication_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem3}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Communication_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF1A72AE"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="ImportBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Import_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem3}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Import_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value="#FF1A72AE"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="MachineBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Barcode_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Barcode_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value=" #FF273193"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="AideBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Aide_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Aide_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value=" #FF273193"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="ParameterBtn" TargetType="Button">
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Images/Metering_Up.png"></ImageBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template" Value="{StaticResource tem}"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="ButtonBase.IsPressed" Value="True">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <ImageBrush ImageSource="Images/Metering_Down.png"></ImageBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Foreground" Value=" #FF273193"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/MainBackGround.png"></ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="170"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Grid.ColumnSpan="2" Stretch="UniformToFill" Source="Images/Title.png" Margin="-2"></Image>
+        <Label Name="lbl_Logo" Width="auto"  Grid.ColumnSpan="2" Foreground="White" FontWeight="Bold" Height="auto" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="XXXX公司" FontSize="40">
+            <Label.Effect>
+                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="8" Opacity="1" />
+            </Label.Effect>
+        </Label>
+        <Button Width="50" Height="50" HorizontalAlignment="Left" Click="Button_Click_1" Style="{StaticResource EmergencyBtn}" Margin="5,0,0,0">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/Home.png"></ImageBrush>
+            </Button.Background>
+        </Button>
+        <Button Grid.Column="1" Width="100" Height="60" Content="急停" Background="Transparent" FontSize="30" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Right" Style="{StaticResource EmergencyBtn}" BorderBrush="Red" BorderThickness="2" Margin="0,0,20,0">
+
+        </Button>
+        <StackPanel Name="btns_Title" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Hidden" Orientation="Horizontal" ToggleButton.Checked="btns_Title_Checked">
+            <RadioButton Name="radioBtnTest" Height="99" FontSize="18" Foreground="White" Padding="0,0,15,0" Content="实验管理" Style="{StaticResource TestManagementRadioBtn}" Margin="0,0,20,0"></RadioButton>
+            <RadioButton Name="radioBtnData" Height="99" FontSize="18" Foreground="White" Padding="0,0,15,0" Content="数据管理" Style="{StaticResource DataManagementRadioBtn}" Margin="20,0,20,0"></RadioButton>
+            <RadioButton Name="radioBtnSystem" Height="99" FontSize="18" Foreground="White" Padding="0,0,15,0" Content="系统管理" Style="{StaticResource SystemManagementRadioBtn}" Margin="20,0,20,0"></RadioButton>
+            <RadioButton Name="radioBtnMachine" Height="99" FontSize="18" Foreground="White" Padding="0,0,15,0" Content="设备管理" Style="{StaticResource MachineManagementRadioBtn}" Margin="20,0,0,0"></RadioButton>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0,1">
+            <StackPanel.Background>
+                <ImageBrush ImageSource="Images/MainBackground2.png"></ImageBrush>
+            </StackPanel.Background>
+            <Label Content="个人信息" FontSize="18" Foreground="Gray" Margin="10,50,0,0"></Label>
+            <Line StrokeThickness="1" Stroke="Gray" X1="10" X2="160" Y1="0" Y2="0"></Line>
+            <WrapPanel>
+                <Image Width="40" Height="40" Source="Images/User.png" Margin="5"></Image>
+                <Label Content="您好:" Foreground="Gray" VerticalContentAlignment="Center" FontSize="18"></Label>
+                <Label Content="xxxxx" Foreground="Gray" VerticalContentAlignment="Center" FontSize="18"></Label>
+            </WrapPanel>
+            <Button Content="[修改密码]" FontWeight="Bold" Foreground="Blue" Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Click="ChangePasswordBtn_Click" Margin="55,0,0,0"></Button>
+            <Button Content="[注销]" FontWeight="Bold" Foreground="Blue" Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Click="Logout_Click" Margin="55,0,0,0"></Button>
+            <Button Content="[退出]" FontWeight="Bold" Foreground="Blue" Style="{StaticResource MainBtn}" HorizontalAlignment="Left" Click="CloseBtn_Click" Margin="55,0,0,0"></Button>
+
+            <Label Content="系统提示" FontSize="18" Foreground="Gray"  Margin="10,50,0,0"></Label>
+            <Line StrokeThickness="1" Stroke="Gray" X1="10" X2="160" Y1="0" Y2="0"></Line>
+            <WrapPanel>
+                <Label Height="30" Width="30" Background="Red" Margin="5"></Label>
+                <Button Content="出现错误" Style="{StaticResource MainBtn}" Click="ErrorBtn_Click" Margin="3,0,0,0"></Button>
+                <Label Content="(10)" FontSize="18" VerticalContentAlignment="Center"></Label>
+            </WrapPanel>
+            <WrapPanel>
+                <Label Height="30" Width="30" Background="Orange" Margin="5"></Label>
+                <Button Content="警告" Style="{StaticResource MainBtn}" Click="WarnBtn_Click" Margin="3,0,0,0"></Button>
+                <Label Content="(10)" FontSize="18" VerticalContentAlignment="Center"></Label>
+            </WrapPanel>
+        </StackPanel>
+        <Viewport3D Grid.Row="1">
+            <Viewport3D.Camera>
+                <!-- Position属性指定3D空间中摄像机的位置，LookDirection属性为摄像机方向 -->
+                <PerspectiveCamera Position="0 0 1024" LookDirection="0 0 -1" />
+            </Viewport3D.Camera>
+            <Viewport3D.Children>
+                <ContainerUIElement3D>
+                    <Viewport2DVisual3D>
+                        <Viewport2DVisual3D.Geometry>
+                            <!-- Positions属性表示绘制对象的点集合，TriangleIndices属性表示对象的正反面（WPF通过逆时针环绕表示正面），TextureCoordinates属性表示2D纹理映射到3D对象 -->
+                            <!-- 一般通过3D建模工具推导得出 -->
+                            <MeshGeometry3D Positions="-395 243 0  -395 -243 0  395 -243 0  395 243 0" TriangleIndices="0 1 2  0 2 3" TextureCoordinates="0 0  0 1  1 1  1 0"/>
+                        </Viewport2DVisual3D.Geometry>
+                        <Viewport2DVisual3D.Material>
+                            <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True"/>
+                        </Viewport2DVisual3D.Material>
+                        <Viewport2DVisual3D.Visual>
+                            <!--放置正面自定义用户控件-->
+                            <StackPanel Width="790" Height="486"  Grid.Row="1" Name="mainSp" ButtonBase.Click="StackPanel_Click">
+                                <Label Content="快捷菜单" FontSize="18" Foreground="Gray" FontWeight="Bold" ></Label>
+                                <Line StrokeThickness="2" Stroke="Gray" X1="0" X2="790" Y1="0" Y2="0" Margin="0,10,0,0"></Line>
+                                <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                                    <WrapPanel Width="242" >
+                                        <Button Name="btnTest" Content="实验管理" FontSize="25" Width="242" Height="81" Style="{StaticResource TestBtn}" Margin="0,0,0,3"></Button>
+                                        <Button Name="btnSample" Content="样品管理" FontSize="18" Width="118" Height="98" Style="{StaticResource SampleBtn}" Margin="0,3,3,3"></Button>
+                                        <Button Name="btnReagents" Content="试剂管理" FontSize="18" Width="118" Height="98" Style="{StaticResource ReagentsBtn}" Margin="3,3,0,3" ></Button>
+                                        <Button Name="btnRequestBtn" Content="测试请求管理" FontSize="18" Width="118" Height="98" Style="{StaticResource RequestBtn}"  Margin="0,3,3,0"></Button>
+                                        <Button Name="btnStartBtn" Content="测试请求实施" FontSize="18" Width="118" Height="98" Style="{StaticResource StartBtn}"  Margin="3,3,0,0"></Button>
+                                    </WrapPanel>
+                                    <WrapPanel Width="242" Margin="32,0,28,0">
+                                        <Button Name="btnData" Content="数据管理" FontSize="25" Width="242" Height="81" Style="{StaticResource DataBtn}"></Button>
+                                        <Button Name="btnDataAnalyze" Content="数据分析" FontSize="18" Width="242" Height="98" Style="{StaticResource DataAnalyzeBtn}" Margin="0,6,0,6"></Button>
+                                        <Button Name="btnPatient" Content="病人管理" FontSize="18" Width="242" Height="98" Style="{StaticResource PatientBtn}"></Button>
+                                    </WrapPanel>
+                                    <WrapPanel Width="242">
+                                        <Button Name="btnSystem" Width="242" Height="81" FontSize="25" Content="系统管理" Style="{StaticResource SystemBtn}"></Button>
+                                        <Button Name="btnCommunication" Width="118" Content="通信设置" FontSize="18" Height="199" Style="{StaticResource CommunicationBtn}" Margin="0,6,6,0"></Button>
+                                        <Button Name="btnImport" Content="试剂导入" FontSize="18"  Width="118" Height="199" Style="{StaticResource ImportBtn}" Margin="0,6,0,0"></Button>
+                                    </WrapPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,40,0,0">
+                                    <Button Name="btnAide" Content="辅助例程" FontSize="18" Width="251" Height="81" Style="{StaticResource AideBtn}"></Button>
+                                    <Button Name="btnScanning" Content="条码扫描" FontSize="18" Width="251" Height="81" Style="{StaticResource MachineBtn}" Margin="18,0,18,0"></Button>
+                                    <Button Name="btnMetering" Content="测光" FontSize="18" Width="251" Height="81" Style="{StaticResource ParameterBtn}"></Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Viewport2DVisual3D.Visual>
+                    </Viewport2DVisual3D>
+                    <Viewport2DVisual3D>
+                        <Viewport2DVisual3D.Geometry>
+                            <MeshGeometry3D Positions="422 315 0  422 -315 0  -422 -315 0  -422 315 0" TriangleIndices="0 1 2  0 2 3" TextureCoordinates="0 0  0 1  1 1  1 0"/>
+                        </Viewport2DVisual3D.Geometry>
+                        <Viewport2DVisual3D.Material>
+                            <DiffuseMaterial Viewport2DVisual3D.IsVisualHostMaterial="True"/>
+                        </Viewport2DVisual3D.Material>
+                        <Viewport2DVisual3D.Visual>
+                            <!--放置反面自定义用户控件-->
+                            <Frame Grid.Row="1" Width="844" Height="630" NavigationUIVisibility="Hidden" Name="pgFrame" >
+                            </Frame>
+                        </Viewport2DVisual3D.Visual>
+                    </Viewport2DVisual3D>
+                    <ContainerUIElement3D.Transform>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <!-- 设置旋转轴为对齐坐标系统的Y轴 -->
+                                <AxisAngleRotation3D x:Name="aar" Angle="0" Axis="0 1 0"/>
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </ContainerUIElement3D.Transform>
+                </ContainerUIElement3D>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <!-- 设置指定方向传播的平行光线填充场景 -->
+                        <DirectionalLight Color="Transparent"/>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </Viewport3D.Children>
+        </Viewport3D>
+        <DockPanel Grid.Row="2">
+            <Label FontSize="12" Content="XXXX   软件版本：" VerticalContentAlignment="Center"></Label>
+            <Label FontSize="12" Content="1.1.1.1  (0.0.1)" VerticalContentAlignment="Center"></Label>
+            <WrapPanel HorizontalAlignment="Right">
+                <Label Content="通讯" FontSize="15" VerticalContentAlignment="Center"></Label>
+                <Button Height="30" Width="30" Style="{StaticResource MainBtn}" Margin="10">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Images/Status_OFF.png"></ImageBrush>
+                    </Button.Background>
+                </Button>
+            </WrapPanel>
+        </DockPanel>
     </Grid>
-</Window>
+</baseModule:BaseWindow>

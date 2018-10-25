@@ -71,7 +71,7 @@ namespace BaseModule.UserRole
 
             //对密码先进行MD5加密
             string strMD5 = EncodeWithMD5(pwd);
-            DataSet ds = DBHelper.Query($"select * from user where UserName='{username}' and Password='{strMD5}'");
+            DataSet ds = DBHelper.Query($"select * from iuser where UserName='{username}' and Password='{strMD5}'");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 result = true;
@@ -102,7 +102,7 @@ namespace BaseModule.UserRole
             oldPwd = EncodeWithMD5(oldPwd);
             newPwd = EncodeWithMD5(newPwd);
 
-            DataSet ds = DBHelper.Query($"select * from user where UserName='{CurrentUser.Name}' and Password='{oldPwd}'");
+            DataSet ds = DBHelper.Query($"select * from iuser where UserName='{CurrentUser.Name}' and Password='{oldPwd}'");
             if (ds.Tables[0].Rows.Count == 0)
             {
                 return -2;
@@ -118,7 +118,7 @@ namespace BaseModule.UserRole
                 sb.AppendFormat(",Password{0}='{1}'", i, dr["Password" + (i == 2 ? "" : (i - 1).ToString())]);
             }
 
-            int cnt = DBHelper.ExecuteSql($"update user set PassWord='{newPwd}'{sb.ToString()} where UserName='{CurrentUser.Name}'");
+            int cnt = DBHelper.ExecuteSql($"update iuser set PassWord='{newPwd}'{sb.ToString()} where UserName='{CurrentUser.Name}'");
             if (cnt != 1)
             {
                 return -4;
@@ -144,7 +144,7 @@ namespace BaseModule.UserRole
                 return -1;
             }
 
-            DataSet ds = DBHelper.Query($"select * from user where UserName='{username}'");
+            DataSet ds = DBHelper.Query($"select * from iuser where UserName='{username}'");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 return -2;
@@ -152,7 +152,7 @@ namespace BaseModule.UserRole
 
             //对密码先进行MD5加密
             string strMD5 = EncodeWithMD5(pwd);
-            int cnt = DBHelper.ExecuteSql($"insert into user (UserName, Password, Role) values ('{username}','{strMD5}',{(int)role})");
+            int cnt = DBHelper.ExecuteSql($"insert into iuser (UserName, Password, Role) values ('{username}','{strMD5}',{(int)role})");
             if (cnt != 1)
             {
                 return -3;
@@ -170,7 +170,7 @@ namespace BaseModule.UserRole
         /// <returns></returns>
         public int ResetPassword(string username)
         {
-            DataSet ds = DBHelper.Query($"select * from user where UserName='{username}'");
+            DataSet ds = DBHelper.Query($"select * from iuser where UserName='{username}'");
             if (ds.Tables[0].Rows.Count == 0)
             {
                 return -1;
@@ -183,7 +183,7 @@ namespace BaseModule.UserRole
 
             //对密码先进行MD5加密
             string strMD5 = EncodeWithMD5(username);
-            int cnt = DBHelper.ExecuteSql($"update user set PassWord='{strMD5}' where UserName='{username}'");
+            int cnt = DBHelper.ExecuteSql($"update iuser set PassWord='{strMD5}' where UserName='{username}'");
             if (cnt != 1)
             {
                 return -3;

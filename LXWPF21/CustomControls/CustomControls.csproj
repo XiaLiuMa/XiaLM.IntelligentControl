@@ -64,9 +64,7 @@
     <Content Include="Images\pagination_prev.gif" />
     <Content Include="Images\pagination_prev_gray.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Themes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="AutoCompleteTextBox.xaml">
       <SubType>Designer</SubType>
